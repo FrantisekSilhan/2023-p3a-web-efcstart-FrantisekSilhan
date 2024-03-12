@@ -1,41 +1,42 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/UKg-nhtY)
 # FilesOnline
 
-Navrhnìte a vytvoøte datovou strukturu pro ukládání informací o slokách uloenıch do stromové struktury - to znamená, e kadá sloka mùe obsahovat další sloky.
-Sloka mùe mít pøesnì jednoho rodièe. Pak vytvoøte aplikaci, která umoní touto strukturou procházet a zobrazovat seznam podsloek.
+NavrhnÄ›te a vytvoÅ™te datovou strukturu pro uklÃ¡dÃ¡nÃ­ informacÃ­ o sloÅ¾kÃ¡ch uloÅ¾enÃ½ch do stromovÃ© struktury - to znamenÃ¡, Å¾e kaÅ¾dÃ¡ sloÅ¾ka mÅ¯Å¾e obsahovat dalÅ¡Ã­ sloÅ¾ky.
+SloÅ¾ka mÅ¯Å¾e mÃ­t pÅ™esnÄ› jednoho rodiÄe. Pak vytvoÅ™te aplikaci, kterÃ¡ umoÅ¾nÃ­ touto strukturou prochÃ¡zet a zobrazovat seznam podsloÅ¾ek.
 
-## Zadání
+## ZadÃ¡nÃ­
 
-1. Vytvoøte datovou strukturu pro ukládání informací o slokách uloenıch do stromové struktury. Jediná datová poloka je název sloky. Jak se odkáete na podloky a rodièe této sloky je na Vás. Klíèem k záznamu o sloce by mìlo bıt vygenerované Guid.					
-1. Zkonfigurujte Entity Framework tak, aby pracoval s databází SQLite (*files.sqlite*)
-1. Pøeneste navrenou strukturu do databáze
-1. Naseedujte do databáze nìkolik záznamù - ideálnì ve tøech úrovních
-1. Data vlote do databáze - tzv. seedování
-1. Modifikujte stránku index.cshtml tak, aby se dokázala pøipojit k databázi
-1. Na stránce zobrazte seznam sloek (koøenovıch)
-1. Pøidejte monost "rozbalit" obsah sloky (podsloky) tak, aby došlo k naètení jen dat z této podsloky - pouijte tedy explicit loading
-1. (Rozšíøení zadání) Pøidejte ponost procházet strukturou smìrem k podslokám pøes odkazy
+1. VytvoÅ™te datovou strukturu pro uklÃ¡dÃ¡nÃ­ informacÃ­ o sloÅ¾kÃ¡ch uloÅ¾enÃ½ch do stromovÃ© struktury. JedinÃ¡ datovÃ¡ poloÅ¾ka je nÃ¡zev sloÅ¾ky. Jak se odkÃ¡Å¾ete na podloÅ¾ky a rodiÄe tÃ©to sloÅ¾ky je na VÃ¡s. KlÃ­Äem k zÃ¡znamu o sloÅ¾ce by mÄ›lo bÃ½t vygenerovanÃ© Guid.					
+1. Zkonfigurujte Entity Framework tak, aby pracoval s databÃ¡zÃ­ SQLite (*files.sqlite*)
+1. PÅ™eneste navrÅ¾enou strukturu do databÃ¡ze
+1. Naseedujte do databÃ¡ze nÄ›kolik zÃ¡znamÅ¯ - ideÃ¡lnÄ› ve tÅ™ech ÃºrovnÃ­ch
+1. Data vloÅ¾te do databÃ¡ze - tzv. seedovÃ¡nÃ­
+1. Modifikujte strÃ¡nku index.cshtml tak, aby se dokÃ¡zala pÅ™ipojit k databÃ¡zi
+1. Na strÃ¡nce zobrazte seznam sloÅ¾ek (koÅ™enovÃ½ch)
+1. PÅ™idejte moÅ¾nost "rozbalit" obsah sloÅ¾ky (podsloÅ¾ky) tak, aby doÅ¡lo k naÄtenÃ­ jen dat z tÃ©to podsloÅ¾ky - pouÅ¾ijte tedy explicit loading
+1. (RozÅ¡Ã­Å™enÃ­ zadÃ¡nÃ­) PÅ™idejte poÅ¾nost prochÃ¡zet strukturou smÄ›rem k podsloÅ¾kÃ¡m pÅ™es odkazy
 
 ## Screenshoty
 
-### Základ
+### ZÃ¡klad
 
-![Základní stránka](screenshots/basic/Bas1.png)
+![ZÃ¡kladnÃ­ strÃ¡nka](screenshots/basic/Bas1.png)
 
-![Základní stránka](screenshots/basic/Bas2.png)
+![ZÃ¡kladnÃ­ strÃ¡nka](screenshots/basic/Bas2.png)
 
-![Základní stránka](screenshots/basic/Bas3.png)
+![ZÃ¡kladnÃ­ strÃ¡nka](screenshots/basic/Bas3.png)
 
-### Rozšíøení
+### RozÅ¡Ã­Å™enÃ­
 
-![Základní stránka](screenshots/advanced/Adv1.png)
+![ZÃ¡kladnÃ­ strÃ¡nka](screenshots/advanced/Adv1.png)
 
-![Základní stránka](screenshots/advanced/Adv2.png)
+![ZÃ¡kladnÃ­ strÃ¡nka](screenshots/advanced/Adv2.png)
 
-![Základní stránka](screenshots/advanced/Adv3.png)
+![ZÃ¡kladnÃ­ strÃ¡nka](screenshots/advanced/Adv3.png)
 
-## Nápovìda
+## NÃ¡povÄ›da
 
-Vygenerování klíèe Guid
+VygenerovÃ¡nÃ­ klÃ­Äe Guid
 
     FolderId = Guid.NewGuid()
 
