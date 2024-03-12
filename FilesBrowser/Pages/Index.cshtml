@@ -12,11 +12,11 @@
 <div>
 <h2>Files</h2>
     <ul>
-        @foreach (var file in Model.Folder.Folders)
+        @foreach (var folder in Model.Folder.Folders)
         {
             <li>
-                @file.Name
-                <a href="@file.Name">open</a>
+                <a href="@Url.Page("Index", new { folder = folder.FolderId })">@folder.Name</a>
+                <a href="">open</a>
             </li>
         }
     </ul>

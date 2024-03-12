@@ -18,10 +18,17 @@ namespace FilesBrowser.Pages
             _context = context;
         }
 
-        public void OnGet()
+        public void OnGet(string folder)
         {
-            Folder = _context.Folders.FirstOrDefault(f => f.Name == "Root");
+            if (string.IsNullOrEmpty(folder)) {
+                Folder = _context.Folders.FirstOrDefault(f => f.Name == "Root");
+            }
+            else {
+                Folder = _context.Folders.FirstOrDefault(f => f.FolderId == Guid.Parse(folder));
+            }
             Folder.Folders = _context.Folders.Where(f => f.ParentFolderId == Folder.FolderId).ToList();
         }
+
+
     }
 }
