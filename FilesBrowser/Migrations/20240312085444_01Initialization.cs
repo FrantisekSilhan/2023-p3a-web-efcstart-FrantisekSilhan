@@ -19,7 +19,7 @@ namespace FilesBrowser.Migrations
                 {
                     FolderId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    ParentFolderId = table.Column<Guid>(type: "TEXT", nullable: false)
+                    ParentFolderId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,8 +28,7 @@ namespace FilesBrowser.Migrations
                         name: "FK_Folders_Folders_ParentFolderId",
                         column: x => x.ParentFolderId,
                         principalTable: "Folders",
-                        principalColumn: "FolderId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "FolderId");
                 });
 
             migrationBuilder.InsertData(
@@ -37,15 +36,15 @@ namespace FilesBrowser.Migrations
                 columns: new[] { "FolderId", "Name", "ParentFolderId" },
                 values: new object[,]
                 {
-                    { new Guid("cf20e53b-de2c-4864-af62-9131fd82e4cb"), "Root", new Guid("cf20e53b-de2c-4864-af62-9131fd82e4cb") },
-                    { new Guid("15c3694b-32e1-478d-96ed-86873a3396f3"), "Music", new Guid("cf20e53b-de2c-4864-af62-9131fd82e4cb") },
-                    { new Guid("4c87829f-184b-4e8a-b5ad-d79b276f699d"), "Images", new Guid("cf20e53b-de2c-4864-af62-9131fd82e4cb") },
-                    { new Guid("0d84a9eb-e863-46f1-a96f-c98ccbd04c26"), "Wallpapers", new Guid("4c87829f-184b-4e8a-b5ad-d79b276f699d") },
-                    { new Guid("10e85872-ada5-4d9c-9fae-221117a68f48"), "Pop", new Guid("15c3694b-32e1-478d-96ed-86873a3396f3") },
-                    { new Guid("4fe5143e-c32d-4c09-b589-e3ef46ddefd4"), "Rock", new Guid("15c3694b-32e1-478d-96ed-86873a3396f3") },
-                    { new Guid("90969de0-de02-4606-85eb-48670193830c"), "Screenshots", new Guid("4c87829f-184b-4e8a-b5ad-d79b276f699d") },
-                    { new Guid("aa3b5248-f54e-4940-adab-c8e68db50d13"), "Family", new Guid("4c87829f-184b-4e8a-b5ad-d79b276f699d") },
-                    { new Guid("d393b30a-7fec-46a6-8318-fb93fb4076a9"), "Orchestral", new Guid("15c3694b-32e1-478d-96ed-86873a3396f3") }
+                    { new Guid("6a9c035c-bfb1-43e7-a7de-d2c09dafcbfa"), "Root", null },
+                    { new Guid("1b94899c-9b2f-4026-bcce-79f627faeb9b"), "Music", new Guid("6a9c035c-bfb1-43e7-a7de-d2c09dafcbfa") },
+                    { new Guid("91e45580-1b20-4ea4-a62d-fbd48b93d373"), "Images", new Guid("6a9c035c-bfb1-43e7-a7de-d2c09dafcbfa") },
+                    { new Guid("7ce23ddf-607d-4d91-8fa8-58ea5edd0602"), "Wallpapers", new Guid("91e45580-1b20-4ea4-a62d-fbd48b93d373") },
+                    { new Guid("94820b8f-9f4f-4ed8-bfeb-a60f099404bf"), "Family", new Guid("91e45580-1b20-4ea4-a62d-fbd48b93d373") },
+                    { new Guid("a104755d-a02c-4b91-a1b9-37c8180fb82d"), "Screenshots", new Guid("91e45580-1b20-4ea4-a62d-fbd48b93d373") },
+                    { new Guid("a888d7d1-14e1-405d-b914-13c3246f082c"), "Pop", new Guid("1b94899c-9b2f-4026-bcce-79f627faeb9b") },
+                    { new Guid("cd55ec91-72a6-4e3b-927c-30cc0b4cb38b"), "Orchestral", new Guid("1b94899c-9b2f-4026-bcce-79f627faeb9b") },
+                    { new Guid("f43248cd-ed46-4ca1-a2e6-2a79ed4062e1"), "Rock", new Guid("1b94899c-9b2f-4026-bcce-79f627faeb9b") }
                 });
 
             migrationBuilder.CreateIndex(

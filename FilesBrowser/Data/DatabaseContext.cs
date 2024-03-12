@@ -12,14 +12,24 @@ namespace FilesBrowser.Data {
                 .WithOne(f => f.ParentFolder)
                 .HasForeignKey(f => f.ParentFolderId);
 
-            Folder rootFolder = new Folder { FolderId = Guid.Parse("CF20E53B-DE2C-4864-AF62-9131FD82E4CB"), Name = "Root", ParentFolderId = Guid.Parse("CF20E53B-DE2C-4864-AF62-9131FD82E4CB") };
+            Folder rootFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Root" };
+            Folder musicFolder =  new Folder { FolderId = Guid.NewGuid(), Name = "Music", ParentFolderId = rootFolder.FolderId };
+            Folder imagesFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Images", ParentFolderId = rootFolder.FolderId };
+            Folder orchestralFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Orchestral", ParentFolderId = musicFolder.FolderId };
+            Folder popFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Pop", ParentFolderId = musicFolder.FolderId };
+            Folder rockFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Rock", ParentFolderId = musicFolder.FolderId };
+            Folder familyFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Family", ParentFolderId = imagesFolder.FolderId };
+            Folder wallpapersFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Wallpapers", ParentFolderId = imagesFolder.FolderId };
+            Folder screenshotsFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Screenshots", ParentFolderId = imagesFolder.FolderId };
 
+            /*rootFolder.Folders = new List<Folder> { musicFolder, imagesFolder };
+            musicFolder.Folders = new List<Folder> { orchestralFolder, popFolder, rockFolder };
+            imagesFolder.Folders = new List<Folder> { familyFolder, wallpapersFolder, screenshotsFolder };
+            */
             modelBuilder.Entity<Folder>().HasData(
                 rootFolder
             );
 
-            Folder musicFolder =  new Folder { FolderId = Guid.NewGuid(), Name = "Music", ParentFolderId = rootFolder.FolderId };
-            Folder imagesFolder = new Folder { FolderId = Guid.NewGuid(), Name = "Images", ParentFolderId = rootFolder.FolderId };
 
             modelBuilder.Entity<Folder>().HasData(
                 musicFolder,
@@ -27,12 +37,12 @@ namespace FilesBrowser.Data {
             );
 
             modelBuilder.Entity<Folder>().HasData(
-                new Folder { FolderId = Guid.NewGuid(), Name = "Orchestral", ParentFolderId = musicFolder.FolderId },
-                new Folder { FolderId = Guid.NewGuid(), Name = "Pop", ParentFolderId = musicFolder.FolderId },
-                new Folder { FolderId = Guid.NewGuid(), Name = "Rock", ParentFolderId = musicFolder.FolderId },
-                new Folder { FolderId = Guid.NewGuid(), Name = "Family", ParentFolderId = imagesFolder.FolderId },
-                new Folder { FolderId = Guid.NewGuid(), Name = "Wallpapers", ParentFolderId = imagesFolder.FolderId },
-                new Folder { FolderId = Guid.NewGuid(), Name = "Screenshots", ParentFolderId = imagesFolder.FolderId }
+                orchestralFolder,
+                popFolder,
+                rockFolder,
+                familyFolder,
+                wallpapersFolder,
+                screenshotsFolder
             );
         }
     }

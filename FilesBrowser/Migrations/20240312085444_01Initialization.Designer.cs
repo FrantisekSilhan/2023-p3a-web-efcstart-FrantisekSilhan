@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilesBrowser.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240312084017_01Initialization")]
+    [Migration("20240312085444_01Initialization")]
     partial class _01Initialization
     {
         /// <inheritdoc />
@@ -30,7 +30,7 @@ namespace FilesBrowser.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ParentFolderId")
+                    b.Property<Guid?>("ParentFolderId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("FolderId");
@@ -42,57 +42,56 @@ namespace FilesBrowser.Migrations
                     b.HasData(
                         new
                         {
-                            FolderId = new Guid("cf20e53b-de2c-4864-af62-9131fd82e4cb"),
-                            Name = "Root",
-                            ParentFolderId = new Guid("cf20e53b-de2c-4864-af62-9131fd82e4cb")
+                            FolderId = new Guid("6a9c035c-bfb1-43e7-a7de-d2c09dafcbfa"),
+                            Name = "Root"
                         },
                         new
                         {
-                            FolderId = new Guid("15c3694b-32e1-478d-96ed-86873a3396f3"),
+                            FolderId = new Guid("1b94899c-9b2f-4026-bcce-79f627faeb9b"),
                             Name = "Music",
-                            ParentFolderId = new Guid("cf20e53b-de2c-4864-af62-9131fd82e4cb")
+                            ParentFolderId = new Guid("6a9c035c-bfb1-43e7-a7de-d2c09dafcbfa")
                         },
                         new
                         {
-                            FolderId = new Guid("4c87829f-184b-4e8a-b5ad-d79b276f699d"),
+                            FolderId = new Guid("91e45580-1b20-4ea4-a62d-fbd48b93d373"),
                             Name = "Images",
-                            ParentFolderId = new Guid("cf20e53b-de2c-4864-af62-9131fd82e4cb")
+                            ParentFolderId = new Guid("6a9c035c-bfb1-43e7-a7de-d2c09dafcbfa")
                         },
                         new
                         {
-                            FolderId = new Guid("d393b30a-7fec-46a6-8318-fb93fb4076a9"),
+                            FolderId = new Guid("cd55ec91-72a6-4e3b-927c-30cc0b4cb38b"),
                             Name = "Orchestral",
-                            ParentFolderId = new Guid("15c3694b-32e1-478d-96ed-86873a3396f3")
+                            ParentFolderId = new Guid("1b94899c-9b2f-4026-bcce-79f627faeb9b")
                         },
                         new
                         {
-                            FolderId = new Guid("10e85872-ada5-4d9c-9fae-221117a68f48"),
+                            FolderId = new Guid("a888d7d1-14e1-405d-b914-13c3246f082c"),
                             Name = "Pop",
-                            ParentFolderId = new Guid("15c3694b-32e1-478d-96ed-86873a3396f3")
+                            ParentFolderId = new Guid("1b94899c-9b2f-4026-bcce-79f627faeb9b")
                         },
                         new
                         {
-                            FolderId = new Guid("4fe5143e-c32d-4c09-b589-e3ef46ddefd4"),
+                            FolderId = new Guid("f43248cd-ed46-4ca1-a2e6-2a79ed4062e1"),
                             Name = "Rock",
-                            ParentFolderId = new Guid("15c3694b-32e1-478d-96ed-86873a3396f3")
+                            ParentFolderId = new Guid("1b94899c-9b2f-4026-bcce-79f627faeb9b")
                         },
                         new
                         {
-                            FolderId = new Guid("aa3b5248-f54e-4940-adab-c8e68db50d13"),
+                            FolderId = new Guid("94820b8f-9f4f-4ed8-bfeb-a60f099404bf"),
                             Name = "Family",
-                            ParentFolderId = new Guid("4c87829f-184b-4e8a-b5ad-d79b276f699d")
+                            ParentFolderId = new Guid("91e45580-1b20-4ea4-a62d-fbd48b93d373")
                         },
                         new
                         {
-                            FolderId = new Guid("0d84a9eb-e863-46f1-a96f-c98ccbd04c26"),
+                            FolderId = new Guid("7ce23ddf-607d-4d91-8fa8-58ea5edd0602"),
                             Name = "Wallpapers",
-                            ParentFolderId = new Guid("4c87829f-184b-4e8a-b5ad-d79b276f699d")
+                            ParentFolderId = new Guid("91e45580-1b20-4ea4-a62d-fbd48b93d373")
                         },
                         new
                         {
-                            FolderId = new Guid("90969de0-de02-4606-85eb-48670193830c"),
+                            FolderId = new Guid("a104755d-a02c-4b91-a1b9-37c8180fb82d"),
                             Name = "Screenshots",
-                            ParentFolderId = new Guid("4c87829f-184b-4e8a-b5ad-d79b276f699d")
+                            ParentFolderId = new Guid("91e45580-1b20-4ea4-a62d-fbd48b93d373")
                         });
                 });
 
@@ -100,9 +99,7 @@ namespace FilesBrowser.Migrations
                 {
                     b.HasOne("FilesBrowser.Models.Folder", "ParentFolder")
                         .WithMany("Folders")
-                        .HasForeignKey("ParentFolderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ParentFolderId");
 
                     b.Navigation("ParentFolder");
                 });

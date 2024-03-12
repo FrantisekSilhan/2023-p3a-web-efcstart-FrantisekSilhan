@@ -8,7 +8,7 @@ namespace FilesBrowser.Models {
         public string Name { get; set; } = string.Empty;
         public ICollection<Folder>? Folders { get; set; }
         [ForeignKey(nameof(ParentFolderId))]
-        public Guid ParentFolderId { get; set; }
+        public Guid? ParentFolderId { get; set; }
         public Folder? ParentFolder { get; set; }
     }
 }
