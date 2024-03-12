@@ -2,6 +2,7 @@
 using FilesBrowser.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace FilesBrowser.Pages
 {
@@ -18,17 +19,15 @@ namespace FilesBrowser.Pages
             _context = context;
         }
 
-        public void OnGet(string folder)
+        public void OnGet(Guid folder)
         {
-            if (string.IsNullOrEmpty(folder)) {
+            if (folder == Guid.Empty) {
                 Folder = _context.Folders.FirstOrDefault(f => f.Name == "Root");
             }
             else {
-                Folder = _context.Folders.FirstOrDefault(f => f.FolderId == Guid.Parse(folder));
+                Folder = _context.Folders.FirstOrDefault(f => f.FolderId == folder);
             }
             Folder.Folders = _context.Folders.Where(f => f.ParentFolderId == Folder.FolderId).ToList();
         }
-
-
     }
 }
