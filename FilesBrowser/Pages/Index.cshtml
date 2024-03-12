@@ -16,8 +16,17 @@
         {
             <li>
                 <a href="@Url.Page("Index", new { folder = folder.FolderId })">@folder.Name</a>
-                <a href="">open</a>
+                <a asp-page="Index" asp-route-folder="@Model.ParentFolderId" asp-route-subfolder="@folder.FolderId" asp-page-handler="Open">open</a>
             </li>
+            @if (Model.FolderId != Guid.Empty && folder.FolderId == Model.FolderId) {
+                <ul>
+                    @foreach (var subfolder in Model.Subfolders) {
+                        <li>
+                            <a href="@Url.Page("Index", new { folder = subfolder.FolderId })">@subfolder.Name</a>
+                        </li>
+                    }
+                </ul>
+            }
         }
     </ul>
 </div>
